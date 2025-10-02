@@ -1,0 +1,5 @@
+name: sensirion-driver-core
+build:
+  cmake: .
+  kconfig: Kconfig
+  

@@ -1,0 +1,5 @@
+config SENSIRION_DRIVER_CORE
+    bool "Enable Sensirion Driver Core"
+    default n
+    help
+      Core utility and I2C helper functions used by Sensirion drivers.
