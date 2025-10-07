@@ -10,7 +10,7 @@ TEST(ModuleTestsCommon, BytesToUint16)
 TEST(ModuleTestsCommon, BytesToUint32)
 {
 	uint8_t b[4] = {0xDE, 0xAD, 0xBE, 0xEF};
-	ASSERT_EQ(sensirion_common_bytes_to_uint32_t(b), (uint32_t)0xDEADBEEFu);
+	ASSERT_EQ(sensirion_common_bytes_to_uint32_t(b), (uint32_t)0xDEADBEEF);
 }
 
 TEST(ModuleTestsCommon, BytesToInt16)
@@ -36,7 +36,7 @@ TEST(ModuleTestsCommon, BytesToFloat)
 TEST(ModuleTestsCommon, Uint32ToBytes)
 {
 	uint8_t out[4] = {};
-	sensirion_common_uint32_t_to_bytes((uint32_t)0x01020304u, out);
+	sensirion_common_uint32_t_to_bytes((uint32_t)0x01020304, out);
 	EXPECT_EQ(0x01, out[0]);
 	EXPECT_EQ(0x02, out[1]);
 	EXPECT_EQ(0x03, out[2]);
@@ -64,14 +64,13 @@ TEST(ModuleTestsCommon, Int32ToBytes)
 TEST(ModuleTestsCommon, Int16ToBytes)
 {
 	uint8_t out[2] = {};
-	sensirion_common_int16_t_to_bytes((int16_t)-2, out); // 0xFFFE
+	sensirion_common_int16_t_to_bytes((int16_t)-2, out);
 	EXPECT_EQ(0xFF, out[0]);
 	EXPECT_EQ(0xFE, out[1]);
 }
 
 TEST(ModuleTestsCommon, FloatToBytes)
 {
-	// Round-trip check: float -> bytes -> float
 	float in = -12.5f;
 	uint8_t b[4] = {};
 	sensirion_common_float_to_bytes(in, b);
@@ -88,8 +87,6 @@ TEST(ModuleTestsCommon, CopyBytes)
 	}
 }
 
-// ---- to_integer (byte array -> integer buffer) ----
-
 TEST(ModuleTestsCommon, ToInt_Exact)
 {
 	// data_length == int_type
@@ -98,7 +95,6 @@ TEST(ModuleTestsCommon, ToInt_Exact)
 
 	sensirion_common_to_integer(src, dst, INTEGER, 4);
 
-	// Expected order per implementation: [04,03,02,01]
 	EXPECT_EQ(0x04, dst[0]);
 	EXPECT_EQ(0x03, dst[1]);
 	EXPECT_EQ(0x02, dst[2]);
