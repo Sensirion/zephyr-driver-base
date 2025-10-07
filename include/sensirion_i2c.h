@@ -1,6 +1,10 @@
 #ifndef SENSIRION_I2C_H
 #define SENSIRION_I2C_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdint.h>
 #include <zephyr/drivers/i2c.h>
 
@@ -37,9 +41,9 @@ int sensirion_i2c_general_call_reset(const struct i2c_dt_spec *i2c_spec);
  * sensirion_i2c_fill_cmd_send_buf() - create the i2c send buffer for a command
  * and a set of argument words. The output buffer interleaves argument words
  * with their checksums.
- * @param buf:        The generated buffer to send over i2c. Then buffer length must
- *              be at least SENSIRION_COMMAND_LEN + num_args *
- *              (SENSIRION_WORD_SIZE + CRC8_LEN).
+ * @param buf:        The generated buffer to send over i2c. Then buffer length
+ * must be at least SENSIRION_COMMAND_LEN + num_args * (SENSIRION_WORD_SIZE +
+ * CRC8_LEN).
  * @param cmd:        The i2c command to send. It already includes a checksum.
  * @param args:       The arguments to the command. Can be NULL if none.
  * @param num_args:   The number of word arguments in args.
@@ -295,5 +299,9 @@ int16_t sensirion_i2c_write_data(const struct i2c_dt_spec *i2c_spec, const uint8
  */
 int16_t sensirion_i2c_read_data_inplace(const struct i2c_dt_spec *i2c_spec, uint8_t *buffer,
 					uint16_t expected_data_length);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* SENSIRION_I2C_H */

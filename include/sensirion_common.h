@@ -1,6 +1,10 @@
 #ifndef SENSIRION_COMMON_H
 #define SENSIRION_COMMON_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdint.h>
 
 #define NO_ERROR              0
@@ -154,5 +158,9 @@ void sensirion_common_copy_bytes(const uint8_t *source, uint8_t *destination, ui
  */
 void sensirion_common_to_integer(const uint8_t *source, uint8_t *destination, INT_TYPE int_type,
 				 uint8_t data_length);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* SENSIRION_COMMON_H */
