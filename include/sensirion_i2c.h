@@ -63,8 +63,8 @@ uint16_t sensirion_i2c_fill_cmd_send_buf(uint8_t *buf, uint16_t cmd, const uint1
  *
  * @return      NO_ERROR on success, an error code otherwise
  */
-int16_t sensirion_i2c_read_words(const struct i2c_dt_spec *i2c_spec, uint16_t *data_words,
-				 uint16_t num_words);
+int sensirion_i2c_read_words(const struct i2c_dt_spec *i2c_spec, uint16_t *data_words,
+			     uint16_t num_words);
 
 /**
  * sensirion_i2c_read_words_as_bytes() - read data words as byte-stream from
@@ -82,8 +82,8 @@ int16_t sensirion_i2c_read_words(const struct i2c_dt_spec *i2c_spec, uint16_t *d
  *
  * @return      NO_ERROR on success, an error code otherwise
  */
-int16_t sensirion_i2c_read_words_as_bytes(const struct i2c_dt_spec *i2c_spec, uint8_t *data,
-					  uint16_t num_words);
+int sensirion_i2c_read_words_as_bytes(const struct i2c_dt_spec *i2c_spec, uint8_t *data,
+				      uint16_t num_words);
 
 /**
  * sensirion_i2c_write_cmd() - writes a command to the sensor
@@ -92,7 +92,7 @@ int16_t sensirion_i2c_read_words_as_bytes(const struct i2c_dt_spec *i2c_spec, ui
  *
  * @return      NO_ERROR on success, an error code otherwise
  */
-int16_t sensirion_i2c_write_cmd(const struct i2c_dt_spec *i2c_spec, uint16_t command);
+int sensirion_i2c_write_cmd(const struct i2c_dt_spec *i2c_spec, uint16_t command);
 
 /**
  * sensirion_i2c_write_cmd_with_args() - writes a command with arguments to the
@@ -104,8 +104,8 @@ int16_t sensirion_i2c_write_cmd(const struct i2c_dt_spec *i2c_spec, uint16_t com
  *
  * @return      NO_ERROR on success, an error code otherwise
  */
-int16_t sensirion_i2c_write_cmd_with_args(const struct i2c_dt_spec *i2c_spec, uint16_t command,
-					  const uint16_t *data_words, uint16_t num_words);
+int sensirion_i2c_write_cmd_with_args(const struct i2c_dt_spec *i2c_spec, uint16_t command,
+				      const uint16_t *data_words, uint16_t num_words);
 
 /**
  * sensirion_i2c_delayed_read_cmd() - send a command, wait for the sensor to
@@ -118,8 +118,8 @@ int16_t sensirion_i2c_write_cmd_with_args(const struct i2c_dt_spec *i2c_spec, ui
  *
  * @return      NO_ERROR on success, an error code otherwise
  */
-int16_t sensirion_i2c_delayed_read_cmd(const struct i2c_dt_spec *i2c_spec, uint16_t cmd,
-				       uint32_t delay_us, uint16_t *data_words, uint16_t num_words);
+int sensirion_i2c_delayed_read_cmd(const struct i2c_dt_spec *i2c_spec, uint16_t cmd,
+				   uint32_t delay_us, uint16_t *data_words, uint16_t num_words);
 /**
  * sensirion_i2c_read_cmd() - reads data words from the sensor after a command
  *                            is issued
@@ -130,8 +130,8 @@ int16_t sensirion_i2c_delayed_read_cmd(const struct i2c_dt_spec *i2c_spec, uint1
  *
  * @return      NO_ERROR on success, an error code otherwise
  */
-int16_t sensirion_i2c_read_cmd(const struct i2c_dt_spec *i2c_spec, uint16_t cmd,
-			       uint16_t *data_words, uint16_t num_words);
+int sensirion_i2c_read_cmd(const struct i2c_dt_spec *i2c_spec, uint16_t cmd, uint16_t *data_words,
+			   uint16_t num_words);
 
 /**
  * sensirion_i2c_add_command_to_buffer() - Add a command to the buffer at
@@ -280,8 +280,8 @@ uint16_t sensirion_i2c_add_bytes_to_buffer(uint8_t *buffer, uint16_t offset, con
  *
  * @return        NO_ERROR on success, error code otherwise
  */
-int16_t sensirion_i2c_write_data(const struct i2c_dt_spec *i2c_spec, const uint8_t *data,
-				 uint16_t data_length);
+int sensirion_i2c_write_data(const struct i2c_dt_spec *i2c_spec, const uint8_t *data,
+			     uint16_t data_length);
 
 /**
  * sensirion_i2c_read_data_inplace() - Reads data from the Sensor.
@@ -297,8 +297,8 @@ int16_t sensirion_i2c_write_data(const struct i2c_dt_spec *i2c_spec, const uint8
  *
  * @return            NO_ERROR on success, an error code otherwise
  */
-int16_t sensirion_i2c_read_data_inplace(const struct i2c_dt_spec *i2c_spec, uint8_t *buffer,
-					uint16_t expected_data_length);
+int sensirion_i2c_read_data_inplace(const struct i2c_dt_spec *i2c_spec, uint8_t *buffer,
+				    uint16_t expected_data_length);
 
 #ifdef __cplusplus
 }
